@@ -1,0 +1,32 @@
+<html xmlns:th="http://www.thymeleaf.org ">
+    <head>
+        <title>Nueva persona</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Datos de la persona</h1>
+        <a th:href="@{/}" th:text="#{accion.regresar}"></a>
+        <br/>
+        <form th:action="@{/guardar}" method="post" th:object="${persona}">
+            <input type="hidden" name="idpersona" th:field="*{idpersona}"/>
+            <br/>
+            <label for="nombre" th:text="#{persona.nombre}"></label>
+            <input type="text" name="nombre" th:field="*{nombre}"/>
+            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error nombre</span>
+             <br/>
+            <label for="apellido" th:text="#{persona.apellido}"></label>
+            <input type="text" name="apellido" th:field="*{apellido}">
+            <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">Error apellido</span>
+             <br/>
+            <label for="telefono" th:text="#{persona.telefono}"></label>
+            <input type="tel" name="telefono" th:field="*{telefono}"/>
+             <br/>
+            <label for="email" th:text="#{persona.email}"></label>
+            <input type="text" name="email" th:field="*{email}"/>
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error email</span>
+             <br/>
+            <input type="submit" name="guardar" th:value="#{accion.guardar}"/>
+        
+        </form>
+    </body>
+</html>

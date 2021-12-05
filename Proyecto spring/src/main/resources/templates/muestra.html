@@ -1,0 +1,31 @@
+<html xmlns:th="http://www.thymeleaf.org ">
+    <head>
+        <title>Mostrar Info</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Datos de la persona</h1>
+        <br/>
+        <form th:action="@{/editar/} + ${persona.idpersona}" method="GET" th:object="${persona}">
+            <input type="hidden" name="idpersona" th:field="*{idpersona}"/>
+            <br/>
+            <label for="nombre" th:text="#{persona.nombre}"></label>
+            <input type="text" name="nombre" th:field="*{nombre}"/>
+             <br/>
+            <label for="apellido" th:text="#{persona.apellido}"></label>
+            <input type="text" name="apellido" th:field="*{apellido}">
+             <br/>
+            <label for="telefono" th:text="#{persona.telefono}"></label>
+            <input type="tel" name="telefono" th:field="*{telefono}"/>
+             <br/>
+            <label for="email" th:text="#{persona.email}"></label>
+            <input type="text" name="email" th:field="*{email}"/>
+             <br/>
+              <label for="saldo" th:text="#{persona.saldo}"></label>
+            <input type="text" name="saldo" th:field="*{saldo}"/>
+             <br/>
+            <input type="submit" name="editar" th:value="#{accion.editar}"/>
+        </form>
+        <a th:href="@{/}" th:text="#{accion.regresar}"></a>
+    </body>
+</html>
